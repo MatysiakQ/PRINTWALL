@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//OPCJA SAMEGO PRINTA
+//OPCJA SAMEGO PRINTA JEŚLI AKTUALNE NIE PODPASUJE
 // document.addEventListener('DOMContentLoaded', function() {
 //     /* Header – dodajemy klasę "scrolled" gdy scrollY > 0 */
 //     const header = document.getElementById('main-header');
