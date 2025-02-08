@@ -8,18 +8,18 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Mood Fabric';
   line-height: 1.6;
-  background-color: #f4f4f4;
+  background-color: fff;
 }
 
-/* Tło dla sekcji "Czym jest druk ścienny" –  ZDJĘCIE DO WRZUCENIA*/
+/* Tło dla sekcji "Czym jest druk ścienny" – zmień URL na odpowiedni */
 #what-is {
   background: url('path/to/background-image.jpg') no-repeat center center;
   background-size: cover;
 }
 
-/* Header – domyślny stan: 40px i przezroczysty */
+/* Header */
 #main-header {
   position: fixed;
   top: 0;
@@ -30,7 +30,6 @@ body {
   transition: all 0.3s ease;
   z-index: 1000;
 }
-/* Header po przewinięciu: 70px, biały z lekką czarną linią (border-bottom) */
 #main-header.scrolled {
   height: 70px;
   background-color: #fff;
@@ -44,8 +43,6 @@ body {
   align-items: center;
   transition: all 0.3s ease;
 }
-
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -62,7 +59,7 @@ body {
   font-weight: bold;
   display: flex;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  font-family: "Mood tracker";
+  font-family: 'Mood Tracker';
 }
 .logo-text .printwall {
   color: #fff;
@@ -71,6 +68,7 @@ body {
   color: #fff;
 }
 
+/* Nawigacja */
 .nav-links {
   display: flex;
   gap: 20px;
@@ -79,7 +77,7 @@ body {
 }
 .nav-link {
   text-decoration: none;
-  color: #000; 
+  color: #000;
   font-size: 1rem;
   transition: color 0.3s ease;
 }
@@ -124,16 +122,13 @@ body {
   transition: transform 0.8s ease;
   margin: 5px;
 }
-
 .social-icon:hover {
   transform: rotate(360deg);
 }
-
-.social-icon:nth-child(1) { background-color: #E4405F; } /* Instagram */
-.social-icon:nth-child(2) { background-color: #3B5998; } /* Facebook */
-.social-icon:nth-child(3) { background-color: #007bb5; } /* LinkedIn */
-.social-icon:nth-child(4) { background-color: #bb0000; } /* YouTube */
-
+.social-icon:nth-child(1) { background-color: #E4405F; }
+.social-icon:nth-child(2) { background-color: #3B5998; }
+.social-icon:nth-child(3) { background-color: #007bb5; }
+.social-icon:nth-child(4) { background-color: #bb0000; }
 
 /* Slider */
 #slider {
@@ -179,7 +174,7 @@ body {
 .left-arrow { left: 10px; }
 .right-arrow { right: 10px; }
 
-/* Tytuły sekcji – Pierdolą się te kreski, napraw to */
+/* Sekcje */
 .section-title {
   display: flex;
   align-items: center;
@@ -196,8 +191,6 @@ body {
   border-bottom: 2px solid #3498db;
   margin: 0 60px;
 }
-
-/* Opisy sekcji */
 .section-description {
   text-align: center;
   max-width: 800px;
@@ -206,7 +199,7 @@ body {
   color: #555;
 }
 
-/* Kafelki w sekcji "Na jakiej powierzchni drukujemy?" – 3 kolumny */
+/* Kafelki */
 .tile-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -236,24 +229,19 @@ body {
   color: #333;
 }
 
-/* FAQ – układ dwukolumnowy: po lewej FAQ, po prawej grafika */
+/* FAQ */
 .faq-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px; /* zwiększony odstęp */
   max-width: 1000px;
   margin: 0 auto 80px;
 }
-.faq-items {
-  flex: 1;
-  min-width: 300px;
-}
+.faq-items,
 .faq-image {
   flex: 1;
   min-width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0; /* zapobiegamy kurczeniu się elementów */
 }
 .faq-image img {
   max-width: 100%;
@@ -273,50 +261,79 @@ body {
   padding: 10px;
   color: #333;
   display: none;
-  margin: 10px 0 10px 20px; /* odstęp od lewej krawędzi */
+  margin: 10px 0 10px 20px;
 }
 .faq-item.active .faq-answer {
   display: block;
 }
 
-/* Sekcja Kontakt */
+/* Sekcja: Kontakt */
+/* Cały obszar sekcji Kontakt ma tło obrazkowe */
+#contact {
+  background: url('TloSekcji.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 80px 20px;
+}
 .contact-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px; /* zwiększony odstęp */
   max-width: 1000px;
   margin: 0 auto 80px;
+  align-items: stretch; /* oba elementy mają równą wysokość */
 }
-.contact-image {
+
+/* Lewa kolumna – strefa z danymi firmy (informacje wyśrodkowane, ułożone w kolumnie) */
+.company-info {
   flex: 1;
   min-width: 300px;
+  flex-shrink: 0;
+  padding: 20px;
+  color: #fff;
+  position: relative;
+}
+.company-details {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  gap: 30px;         
+  font-size: 1.5rem;  
 }
-.contact-image img {
-  max-width: 100%;
-  height: auto;
+
+.company-details p::before {
+  content: "• ";
+  color: blue;
+  font-size: 2rem;    
+  margin-right: 10px; 
 }
+
+/* Prawa kolumna – formularz kontaktowy */
 .contact-form-container {
   flex: 1;
   min-width: 300px;
+  flex-shrink: 0;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 30px;
+  height: 550px;
 }
-.form-header {
-  text-align: center;
+
+/* Formularz kontaktowy */
+.contact-form .form-header {
+  text-align: center; /* wyśrodkowanie nagłówka formularza */
   margin-bottom: 20px;
 }
-.form-header h3 {
+.contact-form .form-header h3 {
   font-size: 1.8rem;
   margin-bottom: 10px;
   color: #333;
 }
-.form-header p {
+.contact-form .form-header p {
   font-size: 1rem;
   color: #555;
 }
@@ -381,35 +398,24 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  height: 50px;
+  width: 100px;
+  font-size: 20px;  
 }
 .contact-form button:hover {
   background-color: #2980b9;
 }
 
+/* Stopka */
 footer {
   background-color: #3498db;
   color: #fff;
-  padding: 20px 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-}
-.footer-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.contact-item {
+  padding: 10px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
   text-align: center;
 }
-.contact-label {
-  margin-bottom: 5px;
-}
-.contact-value {
-  font-weight: bold;
-}
-.footer-social {
-  display: flex;
-  gap: 10px;
+.footer-bottom {
+  max-width: 1000px;
+  margin: 0 auto;
 }
