@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PrintWall</title>
-  <!-- Import czcionki Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Import czcionki Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="samologo.png">
 </head>
 <body>
   <!-- Header -->
@@ -22,11 +22,11 @@
         </span>
       </div>
       <nav class="nav-links">
-        <a href="index.html" class="nav-link">Strona Główna</a>
-        <a href="oferta.html" class="nav-link">Oferta</a>
-        <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="#contact" class="nav-link">Kontakt</a>
-        <a href="order.html" class="order-button">Zamów</a>
+        <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
+        <a href="oferta.html" class="nav-link">OFERTA</a>
+        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+        <a href="#contact" class="nav-link">KONTAKT</a>
+        <a href="order.html" class="order-button">ZAMÓW</a>
       </nav>
     </div>
   </header>
@@ -34,16 +34,16 @@
   <!-- Panel Social Media -->
   <div class="social-panel">
     <a href="https://instagram.com/PrintWall" target="_blank" class="social-icon">
-        <i class="fab fa-instagram"></i>
+      <i class="fab fa-instagram"></i>
     </a>
     <a href="https://facebook.com/PrintWall" target="_blank" class="social-icon">
-        <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-facebook-f"></i>
     </a>
     <a href="https://linkedin.com/in/PrintWall" target="_blank" class="social-icon">
-        <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-linkedin-in"></i>
     </a>
     <a href="https://youtube.com/PrintWall" target="_blank" class="social-icon">
-        <i class="fab fa-youtube"></i>
+      <i class="fab fa-youtube"></i>
     </a>
   </div>
 
@@ -100,7 +100,7 @@
       </div>
     </section>
 
-    <!-- Sekcja: FAQ  -->
+    <!-- Sekcja: FAQ -->
     <section id="faq">
       <h2 class="section-title">FAQ</h2>
       <div class="faq-flex">
@@ -145,14 +145,23 @@
     </section>
 
     <!-- Sekcja: Kontakt -->
+    <!-- Cały obszar sekcji będzie miał tło obrazkowe -->
+    <h2 class="section-title">KONTAKT</h2>
     <section id="contact">
-      <h2 class="section-title">Kontakt</h2>
       <div class="contact-flex">
-        <div class="contact-image">
-          <img src="https://via.placeholder.com/300x400/3498db/ffffff?text=Kontakt" alt="Kontakt">
+        <!-- Lewa kolumna – strefa z danymi firmy, wyśrodkowane, ułożone w kolumnie, z niebieskimi kropkami -->
+        <div class="company-info">
+          <div class="company-details">
+            <h3>PrintWall</h3>
+            <p><strong>NIP:</strong> 1234567890</p>
+            <p><strong>Adres:</strong> ul. Przykładowa 1, 00-000 Miasto</p>
+            <p><strong>Telefon:</strong> +48 503 153 869</p>
+            <p><strong>Email:</strong> PrintWallLublin@gmail.com</p>
+          </div>
         </div>
+        <!-- Prawa kolumna – formularz kontaktowy -->
         <div class="contact-form-container">
-          <form class="contact-form" action="#" method="post">
+          <form class="contact-form" action="submit_form.php" method="post">
             <div class="form-header">
               <h3>NAPISZ DO NAS</h3>
               <p>Umówmy się na bezpłatną konsultację!</p>
@@ -161,35 +170,26 @@
               <input type="text" name="name" placeholder="Imię" required>
               <input type="tel" name="phone" placeholder="Telefon" required>
               <input type="email" name="email" placeholder="Mail" required>
-              <!-- WPROWADŹ BAZKĘ ITD ZAPYTAJ PAWŁA O POMOC-->
             </div>
             <textarea name="message" placeholder="Wiadomość" required></textarea>
             <div class="captcha">
-              <label for="captcha-input">Captcha: wpisz kod <strong>12345</strong></label> <!--KOD CAPTCHA DO POPRAWY-->
+              <label for="captcha-input">Captcha: wpisz kod <strong>12345</strong></label>
               <input type="text" id="captcha-input" name="captcha" placeholder="Kod" required>
             </div>
             <div class="privacy">
               <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">Akceptuję <a href="privacy.html">politykę prywatności</a></label>
+              <label for="privacy"> Akceptuję <a href="privacy.html">politykę prywatności</a></label>
             </div>
-            <button type="submit">Wyślij</button>
+            <button type="submit"><strong>Wyślij</strong></button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <div class="footer-container">
-      <div class="contact-item">
-        <p class="contact-label">/ Zadzwoń</p>
-        <p class="contact-value"><strong>+48 503 153 869</strong></p>
-      </div>
-      <div class="contact-item">
-        <p class="contact-label">/ Napisz</p>
-        <p class="contact-value"><strong>PrintWallLublin@gmail.com</strong></p>
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PrintWall. Wszelkie prawa zastrzeżone.</p>
     </div>
   </footer>
 
