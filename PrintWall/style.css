@@ -1,0 +1,414 @@
+/* Globalne style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+}
+
+/* Tło dla sekcji "Czym jest druk ścienny" –  ZDJĘCIE DO WRZUCENIA*/
+#what-is {
+  background: url('path/to/background-image.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/* Header – domyślny stan: 40px i przezroczysty */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+/* Header po przewinięciu: 70px, biały z lekką czarną linią (border-bottom) */
+#main-header.scrolled {
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.header-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.logo-text .printwall {
+  color: #fff;
+}
+.logo-text .wall {
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-link {
+  text-decoration: none;
+  color: #000; 
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #555;
+}
+.order-button {
+  background-color: #e74c3c;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.order-button:hover {
+  background-color: #c0392b;
+}
+
+/* Panel Social Media */
+.social-panel {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  z-index: 1000;
+}
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.8s ease;
+  margin: 5px;
+}
+
+.social-icon:hover {
+  transform: rotate(360deg);
+}
+
+.social-icon:nth-child(1) { background-color: #E4405F; } /* Instagram */
+.social-icon:nth-child(2) { background-color: #3B5998; } /* Facebook */
+.social-icon:nth-child(3) { background-color: #007bb5; } /* LinkedIn */
+.social-icon:nth-child(4) { background-color: #bb0000; } /* YouTube */
+
+
+/* Slider */
+#slider {
+  position: relative;
+  margin-top: 40px; /* odpowiada wysokości headera w stanie domyślnym */
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+}
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+.slider-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+.left-arrow { left: 10px; }
+.right-arrow { right: 10px; }
+
+/* Tytuły sekcji – Pierdolą się te kreski, napraw to */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  margin: 100px 0 40px;
+  font-size: 1.8rem;
+  position: relative;
+}
+.section-title::before,
+.section-title::after {
+  content: "";
+  width: 320px;
+  border-bottom: 2px solid #3498db;
+  margin: 0 60px;
+}
+
+/* Opisy sekcji */
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 100px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Kafelki w sekcji "Na jakiej powierzchni drukujemy?" – 3 kolumny */
+.tile-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 80px;
+}
+.tile {
+  text-align: center;
+  background: #fff;
+  padding: 10px 5px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.tile:hover {
+  transform: scale(1.05);
+}
+.tile img {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+}
+.tile p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* FAQ – układ dwukolumnowy: po lewej FAQ, po prawej grafika */
+.faq-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+.faq-items {
+  flex: 1;
+  min-width: 300px;
+}
+.faq-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.faq-image img {
+  max-width: 100%;
+  height: auto;
+}
+.faq-item {
+  margin-bottom: 20px;
+}
+.faq-question {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+}
+.faq-answer {
+  padding: 10px;
+  color: #333;
+  display: none;
+  margin: 10px 0 10px 20px; /* odstęp od lewej krawędzi */
+}
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* Sekcja Kontakt */
+.contact-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+.contact-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-image img {
+  max-width: 100%;
+  height: auto;
+}
+.contact-form-container {
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+.form-header p {
+  font-size: 1rem;
+  color: #555;
+}
+.contact-form .form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form input[type="email"] {
+  width: calc(33.333% - 10px);
+}
+.contact-form textarea {
+  width: 100%;
+  resize: vertical;
+  height: 150px;
+  margin-bottom: 15px;
+}
+.contact-form .captcha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.contact-form .captcha label {
+  flex: 1;
+}
+.contact-form .captcha input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.contact-form .privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.contact-form .privacy label {
+  font-size: 0.9rem;
+}
+.contact-form .privacy a {
+  text-decoration: none;
+  color: #3498db;
+}
+.contact-form button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact-form button:hover {
+  background-color: #2980b9;
+}
+
+footer {
+  background-color: #3498db;
+  color: #fff;
+  padding: 20px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.contact-item {
+  text-align: center;
+}
+.contact-label {
+  margin-bottom: 5px;
+}
+.contact-value {
+  font-weight: bold;
+}
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
