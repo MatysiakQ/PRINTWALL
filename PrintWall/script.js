@@ -1,186 +1,130 @@
 document.addEventListener('DOMContentLoaded', function () {
-    /* Header – dodajemy klasę "scrolled" gdy scrollY > 0 */
-    const header = document.getElementById('main-header');
-    window.addEventListener('scroll', function () {
+  /* Header – dodajemy klasę "scrolled" gdy scrollY > 0 */
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', function () {
       header.classList.toggle('scrolled', window.scrollY > 0);
-    });
-  
-    /* Slider – automatyczna zmiana slajdów oraz obsługa strzałek */
-    const slides = document.querySelectorAll('.slide');
-    const leftArrow = document.querySelector('.left-arrow');
-    const rightArrow = document.querySelector('.right-arrow');
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    let slideInterval = setInterval(nextSlide, 5000);
-  
-    function showSlide(index) {
+  });
+
+  /* Slider – automatyczna zmiana slajdów oraz obsługa strzałek */
+  const slides = document.querySelectorAll('.slide');
+  const leftArrow = document.querySelector('.left-arrow');
+  const rightArrow = document.querySelector('.right-arrow');
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  let slideInterval = setInterval(nextSlide, 5000);
+
+  function showSlide(index) {
       slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
+          slide.classList.toggle('active', i === index);
       });
-    }
-  
-    function nextSlide() {
+  }
+
+  function nextSlide() {
       currentSlide = (currentSlide + 1) % totalSlides;
       showSlide(currentSlide);
-    }
-  
-    function prevSlide() {
+  }
+
+  function prevSlide() {
       currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
       showSlide(currentSlide);
-    }
-  
-    rightArrow?.addEventListener('click', function () {
+  }
+
+  rightArrow?.addEventListener('click', function () {
       nextSlide();
       resetInterval();
-    });
-  
-    leftArrow?.addEventListener('click', function () {
+  });
+
+  leftArrow?.addEventListener('click', function () {
       prevSlide();
       resetInterval();
-    });
-  
-    function resetInterval() {
+  });
+
+  function resetInterval() {
       clearInterval(slideInterval);
       slideInterval = setInterval(nextSlide, 5000);
-    }
-  
-    /* Animacja napisu "PRINTWALL" – efekt fali */
-    const printWall = document.querySelector('.printwall'); // Wybieramy element .printwall
-    if (printWall) {
-      const colorPalette = ['#e74c3c', '#2ecc71', '#e67e22', '#9b59b6', '#f1c40f'];
-      let currentColorIndex = 0;
-  
-      // Najpierw rozdzielamy tekst na litery
+  }
+
+  /* --------------------------- */
+  /* Animacja napisu "PRINTWALL" */
+  /* --------------------------- */
+  const printWall = document.querySelector('.printwall'); // wybieramy element z napisem
+  if (printWall) {
+      // Rozdzielamy tekst na pojedyncze litery i opakowujemy je w <span>
       const printText = printWall.textContent.trim();
-      printWall.innerHTML = ''; // Czyścimy oryginalny tekst
+      printWall.innerHTML = '';
       printText.split('').forEach(letter => {
-        const span = document.createElement('span');
-        span.textContent = letter; // Tworzymy element <span> dla każdej litery
-        printWall.appendChild(span); // Dodajemy go do printwall
+          const span = document.createElement('span');
+          span.textContent = letter;
+          span.style.color = '#fff'; // startujemy z białym kolorem
+          printWall.appendChild(span);
       });
-  
-      function waveEffect() {
-        const printLetters = printWall.querySelectorAll('span'); // Wybieramy wszystkie litery w printwall
-        const color = colorPalette[currentColorIndex];
-  
-        printLetters.forEach((letter, i) => {
-          setTimeout(() => {
-            letter.style.color = color;
-          }, i * 200); // Opóźnienie zmiany koloru
-        });
-  
-        setTimeout(() => {
-          printLetters.forEach((letter, i) => {
-            setTimeout(() => {
-              letter.style.color = '#fff'; // Powrót do białego koloru
-            }, i * 200);
-          });
-        }, printLetters.length * 200 + 1000); // Opóźnienie powrotu
-  
-        currentColorIndex = (currentColorIndex + 1) % colorPalette.length; // Zmiana koloru na następny z listy
+
+      // Funkcja generująca losowy, żywy kolor (HSL: pełne nasycenie, jaśniejszy odcień)
+      function randomColor() {
+          const hue = Math.floor(Math.random() * 360);
+          return `hsl(${hue}, 100%, 60%)`;
       }
-  
-      setInterval(waveEffect, 4000); // Powtarzamy falę co 4 sekundy
-    } else {
+
+      const delay = 200; // opóźnienie między zmianami liter (w ms)
+      const pauseBeforeWhitening = 1000; // pauza po zakończeniu fali kolorowania
+      const pauseBeforeColoring = 1000; // pauza przed rozpoczęciem kolejnej fali kolorowania
+
+      // Faza 1: Fala kolorowania (przejście z białego na kolorowy)
+      function coloringWave() {
+          const letters = printWall.querySelectorAll('span');
+          // Upewniamy się, że wszystkie litery zaczynają od białego koloru
+          letters.forEach(letter => letter.style.color = '#fff');
+
+          // Na początku ustawiamy pierwszą literę na losowy kolor
+          let index = 0;
+          letters[index].style.color = randomColor();
+
+          function propagate() {
+              if (index < letters.length - 1) {
+                  // Pobieramy aktualny kolor z poprzedniej litery
+                  let currentColor = letters[index].style.color;
+                  index++;
+                  // Następna litera "dziedziczy" ten kolor
+                  letters[index].style.color = currentColor;
+                  // Poprzednia litera dostaje nowy losowy, żywy kolor
+                  letters[index - 1].style.color = randomColor();
+                  setTimeout(propagate, delay);
+              } else {
+                  // Gdy dotrzemy do ostatniej litery, całość jest już kolorowa – czekamy chwilę...
+                  setTimeout(whiteningWave, pauseBeforeWhitening);
+              }
+          }
+          setTimeout(propagate, delay);
+      }
+
+      // Faza 2: Fala przywracania do białego (kolorowy -> biały)
+      function whiteningWave() {
+          const letters = printWall.querySelectorAll('span');
+          let index = 0;
+          function whiten() {
+              if (index < letters.length) {
+                  letters[index].style.color = '#fff';
+                  index++;
+                  setTimeout(whiten, delay);
+              } else {
+                  // Po przywróceniu wszystkich liter do białego koloru, pauza i restart fali
+                  setTimeout(coloringWave, pauseBeforeColoring);
+              }
+          }
+          whiten();
+      }
+
+      // Uruchamiamy cyklicznie efekt fali
+      coloringWave();
+  } else {
       console.warn('Nie znaleziono elementu .printwall');
-    }
-  
-    /* FAQ – rozwijanie/zwijanie odpowiedzi */
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
+  }
+
+  /* FAQ – rozwijanie/zwijanie odpowiedzi */
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(question => {
       question.addEventListener('click', function () {
-        this.parentElement.classList.toggle('active');
+          this.parentElement.classList.toggle('active');
       });
-    });
   });
-  
-
-
-
-//OPCJA SAMEGO PRINTA JEŚLI AKTUALNE NIE PODPASUJE
-// document.addEventListener('DOMContentLoaded', function() {
-//     /* Header – dodajemy klasę "scrolled" gdy scrollY > 0 */
-//     const header = document.getElementById('main-header');
-//     window.addEventListener('scroll', function() {
-//         header.classList.toggle('scrolled', window.scrollY > 0);
-//     });
-
-//     /* Slider – automatyczna zmiana slajdów oraz obsługa strzałek */
-//     const slides = document.querySelectorAll('.slide');
-//     const leftArrow = document.querySelector('.left-arrow');
-//     const rightArrow = document.querySelector('.right-arrow');
-//     let currentSlide = 0;
-//     const totalSlides = slides.length;
-//     let slideInterval = setInterval(nextSlide, 5000);
-
-//     function showSlide(index) {
-//         slides.forEach((slide, i) => {
-//             slide.classList.toggle('active', i === index);
-//         });
-//     }
-
-//     function nextSlide() {
-//         currentSlide = (currentSlide + 1) % totalSlides;
-//         showSlide(currentSlide);
-//     }
-
-//     function prevSlide() {
-//         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-//         showSlide(currentSlide);
-//     }
-
-//     rightArrow?.addEventListener('click', function() {
-//         nextSlide();
-//         resetInterval();
-//     });
-
-//     leftArrow?.addEventListener('click', function() {
-//         prevSlide();
-//         resetInterval();
-//     });
-
-//     function resetInterval() {
-//         clearInterval(slideInterval);
-//         slideInterval = setInterval(nextSlide, 5000);
-//     }
-
-//     /* Animacja napisu "PRINT" – efekt fali */
-//     const printLetters = document.querySelectorAll('.print span');
-//     if (printLetters.length > 0) {
-//         const colorPalette = ['#e74c3c', '#2ecc71', '#e67e22', '#9b59b6', '#f1c40f'];
-//         let currentColorIndex = 0;
-
-//         function waveEffect() {
-//             console.log("Efekt fali uruchomiony"); // Sprawdzenie czy funkcja działa
-//             const color = colorPalette[currentColorIndex];
-
-//             printLetters.forEach((letter, i) => {
-//                 setTimeout(() => {
-//                     letter.style.color = color;
-//                 }, i * 200);
-//             });
-
-//             setTimeout(() => {
-//                 printLetters.forEach((letter, i) => {
-//                     setTimeout(() => {
-//                         letter.style.color = '#fff';
-//                     }, i * 200);
-//                 });
-//             }, printLetters.length * 200 + 1000);
-
-//             currentColorIndex = (currentColorIndex + 1) % colorPalette.length;
-//         }
-
-//         setInterval(waveEffect, 4000);
-//     } else {
-//         console.warn("Nie znaleziono elementów '.print span'");
-//     }
-
-//     /* FAQ – rozwijanie/zwijanie odpowiedzi */
-//     const faqQuestions = document.querySelectorAll('.faq-question');
-//     faqQuestions.forEach(question => {
-//         question.addEventListener('click', function() {
-//             this.parentElement.classList.toggle('active');
-//         });
-//     });
-// });
+});
