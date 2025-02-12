@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PrintWall</title>
-  <!-- Import czcionek: Montserrat dla treści oraz Lato dla logo -->
+  <!-- Import czcionek -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Główny plik CSS -->
   <link rel="stylesheet" href="style.css">
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/png" href="samologo.png">
 </head>
 <body>
-  <!-- Header z podziałem na 3 sekcje -->
+  <!-- Header -->
   <header id="main-header">
     <div class="header-container">
       <div class="header-left">
@@ -27,7 +28,7 @@
         <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
         <a href="oferta.html" class="nav-link">OFERTA</a>
         <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-        <a href="#contact" class="nav-link">KONTAKT</a>
+        <a href="#contact-section" class="nav-link">KONTAKT</a>
       </nav>
       <div class="header-right">
         <a href="order.html" class="order-button">ZAMÓW</a>
@@ -51,7 +52,7 @@
     </a>
   </div>
 
-  <!-- Slider – zwiększona wysokość -->
+  <!-- Slider -->
   <section id="slider">
     <div class="slides">
       <div class="slide active" style="background-image: url('Header1.jpg');"></div>
@@ -62,9 +63,9 @@
     <div class="slider-arrow right-arrow">&#10095;</div>
   </section>
 
-  <!-- Main Content -->
+  <!-- Główna zawartość strony -->
   <main id="content">
-    <!-- Sekcja: Dlaczego warto wybrać nadruk ścienny -->
+    <!-- Przykładowe sekcje (np. "Dlaczego warto wybrać nadruk ścienny", "Na jakiej powierzchni drukujemy?", FAQ) -->
     <section id="why-choose">
       <h2 class="section-title">Dlaczego warto wybrać nadruk ścienny</h2>
       <div class="why-tile-container">
@@ -87,7 +88,6 @@
       </div>
     </section>
 
-    <!-- Sekcja: Na jakiej powierzchni drukujemy? -->
     <section id="surfaces">
       <h2 class="section-title">Na jakiej powierzchni drukujemy?</h2>
       <div class="tile-container">
@@ -118,7 +118,6 @@
       </div>
     </section>
 
-    <!-- Sekcja: FAQ -->
     <section id="faq">
       <h2 class="section-title">FAQ</h2>
       <div class="faq-flex">
@@ -161,58 +160,66 @@
         </div>
       </div>
     </section>
-
-    <!-- Sekcja: Kontakt -->
-    <h2 class="section-title">KONTAKT</h2>
-    <section id="contact">
-      <div class="contact-flex">
-        <!-- Lewa kolumna – dane firmy -->
-        <div class="company-info">
-          <div class="company-details">
-            <h3>PrintWall</h3>
-            <p><strong>NIP:</strong> 1234567890</p>
-            <p><strong>Adres:</strong> ul. Przykładowa 1, 00-000 Miasto</p>
-            <p><strong>Telefon:</strong> +48 503 153 869</p>
-            <p><strong>Email:</strong> PrintWallLublin@gmail.com</p>
-          </div>
-        </div>
-        <!-- Prawa kolumna – formularz kontaktowy -->
-        <div class="contact-form-container">
-          <form class="contact-form" action="submit_form.php" method="post">
-            <div class="form-group">
-              <label for="name">Imię i nazwisko:</label>
-              <input type="text" name="name" id="name" placeholder="Jan Kowalski" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" name="email" id="email" placeholder="example@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefon:</label>
-              <input type="tel" name="phone" id="phone" placeholder="123 456 789" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Wiadomość:</label>
-              <textarea name="message" id="message" placeholder="Treść Wiadomości" required></textarea>
-            </div>
-            <div class="form-group captcha">
-              <!-- <label for="captcha-input">Captcha: wpisz kod <strong>54723</strong></label>
-              <input type="text" id="captcha-input" name="captcha" placeholder="Kod" required> -->
-            </div>
-            <div class="form-group privacy">
-              <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">Akceptuję<a href="privacy.html">politykę prywatności</a></label>
-            </div>
-            <button type="submit"><strong>Wyślij</strong></button>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <div class="footer-bottom">
-      <p>&copy; 2025 PrintWall. Wszelkie prawa zastrzeżone.</p>
+  <!-- Nowa Sekcja: Kontakt -->
+  <section id="contact-section">
+    <div class="contact-container">
+      <!-- Lewa kolumna: dane kontaktowe -->
+      <div class="contact-left">
+        <h2>Skontaktuj się z nami</h2>
+        <p class="contact-description">
+          Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w realizacji projektu
+        </p>
+        <ul class="contact-info">
+          <li>
+            <i class="fas fa-phone"></i>
+            <span>+48 123 456 789</span>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span>kontakt@3d-xyz.pl</span>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>ul. Przykładowa 123, 00-000 Warszawa</span>
+          </li>
+        </ul>
+      </div>
+      <!-- Prawa kolumna: formularz kontaktowy -->
+      <div class="contact-right">
+        <form class="contact-form" action="submit_form.php" method="post">
+          <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" name="name" id="name" placeholder="Jan Kowalski" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="example@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" name="phone" id="phone" placeholder="123 456 789" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Wiadomość:</label>
+            <textarea name="message" id="message" placeholder="Treść wiadomości" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nowa Stopka -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <p>PrintWall</p>
+      </div>
+      <p class="footer-copy">
+        &copy; 2025 PrinterWall. Wszelkie prawa zastrzeżone.
+      </p>
     </div>
   </footer>
 
