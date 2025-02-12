@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PrintWall</title>
+  <!-- Import czcionek: Montserrat dla treści oraz Lato dla logo -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/png" href="samologo.png">
 </head>
@@ -49,12 +51,12 @@
     </a>
   </div>
 
-  <!-- Slider -->
+  <!-- Slider – zwiększona wysokość -->
   <section id="slider">
     <div class="slides">
-      <div class="slide active" style="background-image: url('https://picsum.photos/id/1018/1920/1080');"></div>
-      <div class="slide" style="background-image: url('https://picsum.photos/id/1015/1920/1080');"></div>
-      <div class="slide" style="background-image: url('https://picsum.photos/id/1016/1920/1080');"></div>
+      <div class="slide active" style="background-image: url('Header1.jpg');"></div>
+      <div class="slide" style="background-image: url('Header2.jpg');"></div>
+      <div class="slide" style="background-image: url('Header3.jpg');"></div>
     </div>
     <div class="slider-arrow left-arrow">&#10094;</div>
     <div class="slider-arrow right-arrow">&#10095;</div>
@@ -179,27 +181,27 @@
           <form class="contact-form" action="submit_form.php" method="post">
             <div class="form-group">
               <label for="name">Imię i nazwisko:</label>
-              <input type="text" name="name" id="name" placeholder="Imię i nazwisko" required>
+              <input type="text" name="name" id="name" placeholder="Jan Kowalski" required>
             </div>
             <div class="form-group">
               <label for="email">Email:</label>
-              <input type="email" name="email" id="email" placeholder="Email" required>
+              <input type="email" name="email" id="email" placeholder="example@example.com" required>
             </div>
             <div class="form-group">
               <label for="phone">Telefon:</label>
-              <input type="tel" name="phone" id="phone" placeholder="Telefon" required>
+              <input type="tel" name="phone" id="phone" placeholder="123 456 789" required>
             </div>
             <div class="form-group">
               <label for="message">Wiadomość:</label>
-              <textarea name="message" id="message" placeholder="Wiadomość" required></textarea>
+              <textarea name="message" id="message" placeholder="Treść Wiadomości" required></textarea>
             </div>
             <div class="form-group captcha">
-              <label for="captcha-input">Captcha: wpisz kod <strong>54723</strong></label>
-              <input type="text" id="captcha-input" name="captcha" placeholder="Kod" required>
+              <!-- <label for="captcha-input">Captcha: wpisz kod <strong>54723</strong></label>
+              <input type="text" id="captcha-input" name="captcha" placeholder="Kod" required> -->
             </div>
             <div class="form-group privacy">
               <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy">Akceptuję <a href="privacy.html">politykę prywatności</a></label>
+              <label for="privacy">Akceptuję<a href="privacy.html">politykę prywatności</a></label>
             </div>
             <button type="submit"><strong>Wyślij</strong></button>
           </form>
