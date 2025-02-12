@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const sliderHeight = slider.offsetHeight;
 
   window.addEventListener('scroll', function () {
+    // Dodajemy/usuwa klasę "scrolled" dla zmiany wysokości headera
     header.classList.toggle('scrolled', window.scrollY > 0);
 
+    // Zmiana przezroczystości headera, gdy jest nad sliderem
     if (window.scrollY < sliderHeight) {
       header.style.backgroundColor = "rgba(255,255,255,0.8)";
     } else {
