@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const sliderHeight = slider.offsetHeight;
 
   window.addEventListener('scroll', function () {
-    // Dodajemy/usuwa klasę "scrolled" dla zmiany wysokości headera
+    // Dodaj/usuń klasę "scrolled" dla zmiany wysokości headera
     header.classList.toggle('scrolled', window.scrollY > 0);
 
-    // Zmiana przezroczystości headera, gdy jest nad sliderem
+    // Zmiana tła headera w zależności od pozycji scrolla
     if (window.scrollY < sliderHeight) {
       header.style.backgroundColor = "rgba(255,255,255,0.8)";
     } else {
@@ -54,9 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slideInterval = setInterval(nextSlide, 5000);
   }
 
-  /* --------------------------- */
   /* Animacja napisu "PRINTWALL" */
-  /* --------------------------- */
   const printWall = document.querySelector('.printwall');
   if (printWall) {
     const printText = printWall.textContent.trim();
@@ -117,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.warn('Nie znaleziono elementu .printwall');
   }
 
-  /* FAQ – rozwijanie/zwijanie odpowiedzi z przełączaniem strzałki */
+  /* FAQ – rozwijanie/zwijanie odpowiedzi */
   const faqQuestions = document.querySelectorAll('.faq-question');
   faqQuestions.forEach(question => {
     question.addEventListener('click', function () {
