@@ -4,30 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PrintWall</title>
-  <!-- Import czcionki Lato -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Import czcionek: Montserrat dla treści oraz Lato dla logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/png" href="samologo.png">
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header z podziałem na 3 sekcje -->
   <header id="main-header">
     <div class="header-container">
-      <div class="logo">
-        <img src="samologo.png" alt="Logo">
-        <span class="logo-text">
-          <span class="printwall">PRINTWALL</span>
-        </span>
+      <div class="header-left">
+        <div class="logo">
+          <img src="samologo.png" alt="Logo">
+          <span class="logo-text">
+            <span class="printwall">PRINTWALL</span>
+          </span>
+        </div>
       </div>
-      <nav class="nav-links">
+      <nav class="header-center">
         <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
         <a href="oferta.html" class="nav-link">OFERTA</a>
         <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
         <a href="#contact" class="nav-link">KONTAKT</a>
-        <a href="order.html" class="order-button">ZAMÓW</a>
       </nav>
+      <div class="header-right">
+        <a href="order.html" class="order-button">ZAMÓW</a>
+      </div>
     </div>
   </header>
 
@@ -47,12 +51,12 @@
     </a>
   </div>
 
-  <!-- Slider -->
+  <!-- Slider – zwiększona wysokość -->
   <section id="slider">
     <div class="slides">
-      <div class="slide active" style="background-image: url('https://via.placeholder.com/1200x500?text=Slide+1');"></div>
-      <div class="slide" style="background-image: url('https://via.placeholder.com/1200x500?text=Slide+2');"></div>
-      <div class="slide" style="background-image: url('https://via.placeholder.com/1200x500?text=Slide+3');"></div>
+      <div class="slide active" style="background-image: url('https://picsum.photos/id/1018/1920/1080');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/1015/1920/1080');"></div>
+      <div class="slide" style="background-image: url('https://picsum.photos/id/1016/1920/1080');"></div>
     </div>
     <div class="slider-arrow left-arrow">&#10094;</div>
     <div class="slider-arrow right-arrow">&#10095;</div>
@@ -60,13 +64,27 @@
 
   <!-- Main Content -->
   <main id="content">
-    <!-- Sekcja: Czym jest druk ścienny -->
-    <section id="what-is">
-      <h2 class="section-title">Czym jest druk ścienny</h2>
-      <p class="section-description">
-        Druk ścienny to nowoczesna metoda, która pozwala na nanoszenie obrazów i grafik bezpośrednio na powierzchnię ściany, tworząc unikalne dekoracje wnętrz i przestrzeni publicznych.
-        Dzięki zastosowaniu zaawansowanej technologii, możliwe jest osiągnięcie wysokiej jakości i trwałości druku, który odmieni każde wnętrze.
-      </p>
+    <!-- Sekcja: Dlaczego warto wybrać nadruk ścienny -->
+    <section id="why-choose">
+      <h2 class="section-title">Dlaczego warto wybrać nadruk ścienny</h2>
+      <div class="why-tile-container">
+        <div class="why-tile">
+          <div class="tile-title">Oszczędność</div>
+          <div class="tile-description">Efektywne wykorzystanie zasobów zapewnia niższe koszty.</div>
+        </div>
+        <div class="why-tile">
+          <div class="tile-title">Trwałość</div>
+          <div class="tile-description">Nowoczesne technologie gwarantują długowieczność nadruku.</div>
+        </div>
+        <div class="why-tile">
+          <div class="tile-title">Szybka Realizacja</div>
+          <div class="tile-description">Realizacja projektów w krótkim czasie dzięki zoptymalizowanym procesom.</div>
+        </div>
+        <div class="why-tile">
+          <div class="tile-title">Profesjonalizm</div>
+          <div class="tile-description">Wysoka jakość i precyzja wykonania przez doświadczony zespół.</div>
+        </div>
+      </div>
     </section>
 
     <!-- Sekcja: Na jakiej powierzchni drukujemy? -->
@@ -74,12 +92,12 @@
       <h2 class="section-title">Na jakiej powierzchni drukujemy?</h2>
       <div class="tile-container">
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Szkło" alt="Szkło">
+          <img src="glass.png" alt="Szkło">
           <p>Szkło</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Pomalowana+Ściana" alt="Pomalowana Ściana">
-          <p>Pomalowana Ściana</p>
+          <img src="https://via.placeholder.com/200?text=Pomalowana+Ściana" alt="Ściana">
+          <p>Ściana</p>
         </div>
         <div class="tile">
           <img src="https://via.placeholder.com/200?text=Płytki" alt="Płytki">
@@ -145,11 +163,10 @@
     </section>
 
     <!-- Sekcja: Kontakt -->
-    <!-- Cały obszar sekcji będzie miał tło obrazkowe -->
     <h2 class="section-title">KONTAKT</h2>
     <section id="contact">
       <div class="contact-flex">
-        <!-- Lewa kolumna – strefa z danymi firmy, wyśrodkowane, ułożone w kolumnie, z niebieskimi kropkami -->
+        <!-- Lewa kolumna – dane firmy -->
         <div class="company-info">
           <div class="company-details">
             <h3>PrintWall</h3>
@@ -162,23 +179,29 @@
         <!-- Prawa kolumna – formularz kontaktowy -->
         <div class="contact-form-container">
           <form class="contact-form" action="submit_form.php" method="post">
-            <div class="form-header">
-              <h3>NAPISZ DO NAS</h3>
-              <p>Umówmy się na bezpłatną konsultację!</p>
+            <div class="form-group">
+              <label for="name">Imię i nazwisko:</label>
+              <input type="text" name="name" id="name" placeholder="Imię i nazwisko" required>
             </div>
-            <div class="form-row">
-              <input type="text" name="name" placeholder="Imię" required>
-              <input type="tel" name="phone" placeholder="Telefon" required>
-              <input type="email" name="email" placeholder="Mail" required>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" name="email" id="email" placeholder="Email" required>
             </div>
-            <textarea name="message" placeholder="Wiadomość" required></textarea>
-            <div class="captcha">
-              <label for="captcha-input">Captcha: wpisz kod <strong>12345</strong></label>
+            <div class="form-group">
+              <label for="phone">Telefon:</label>
+              <input type="tel" name="phone" id="phone" placeholder="Telefon" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Wiadomość:</label>
+              <textarea name="message" id="message" placeholder="Wiadomość" required></textarea>
+            </div>
+            <div class="form-group captcha">
+              <label for="captcha-input">Captcha: wpisz kod <strong>54723</strong></label>
               <input type="text" id="captcha-input" name="captcha" placeholder="Kod" required>
             </div>
-            <div class="privacy">
+            <div class="form-group privacy">
               <input type="checkbox" id="privacy" name="privacy" required>
-              <label for="privacy"> Akceptuję <a href="privacy.html">politykę prywatności</a></label>
+              <label for="privacy">Akceptuję <a href="privacy.html">politykę prywatności</a></label>
             </div>
             <button type="submit"><strong>Wyślij</strong></button>
           </form>
