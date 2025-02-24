@@ -65,59 +65,65 @@
 
   <!-- Główna zawartość strony -->
   <main id="content">
-    <!-- Przykładowe sekcje (np. "Dlaczego warto wybrać nadruk ścienny", "Na jakiej powierzchni drukujemy?", FAQ) -->
+    <!-- Sekcja "Dlaczego warto wybrać nadruk ścienny" -->
     <section id="why-choose">
       <h2 class="section-title">Dlaczego warto wybrać nadruk ścienny</h2>
       <div class="why-tile-container">
         <div class="why-tile">
+          <i class="fas fa-coins"></i>
           <div class="tile-title">Oszczędność</div>
           <div class="tile-description">Efektywne wykorzystanie zasobów zapewnia niższe koszty.</div>
         </div>
         <div class="why-tile">
+          <i class="fas fa-shield-alt"></i>
           <div class="tile-title">Trwałość</div>
           <div class="tile-description">Nowoczesne technologie gwarantują długowieczność nadruku.</div>
         </div>
         <div class="why-tile">
+          <i class="fas fa-bolt"></i>
           <div class="tile-title">Szybka Realizacja</div>
           <div class="tile-description">Realizacja projektów w krótkim czasie dzięki zoptymalizowanym procesom.</div>
         </div>
         <div class="why-tile">
+          <i class="fas fa-user-tie"></i>
           <div class="tile-title">Profesjonalizm</div>
           <div class="tile-description">Wysoka jakość i precyzja wykonania przez doświadczony zespół.</div>
         </div>
       </div>
     </section>
 
+    <!-- Sekcja "Na jakiej powierzchni drukujemy?" -->
     <section id="surfaces">
       <h2 class="section-title">Na jakiej powierzchni drukujemy?</h2>
       <div class="tile-container">
         <div class="tile">
-          <img src="glass.png" alt="Szkło">
+          <i class="fas fa-window-maximize surface-icon"></i>
           <p>Szkło</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Pomalowana+Ściana" alt="Ściana">
+          <i class="fas fa-border-all surface-icon"></i>
           <p>Ściana</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Płytki" alt="Płytki">
+          <i class="fas fa-th-large surface-icon"></i>
           <p>Płytki</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Cegła" alt="Cegła">
+          <i class="fas fa-cubes surface-icon"></i>
           <p>Cegła</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Beton" alt="Beton">
+          <i class="fas fa-industry surface-icon"></i>
           <p>Beton</p>
         </div>
         <div class="tile">
-          <img src="https://via.placeholder.com/200?text=Plastik" alt="Plastik">
+          <i class="fas fa-recycle surface-icon"></i>
           <p>Plastik</p>
         </div>
       </div>
     </section>
 
+    <!-- Sekcja FAQ -->
     <section id="faq">
       <h2 class="section-title">FAQ</h2>
       <div class="faq-flex">
@@ -162,12 +168,11 @@
     </section>
   </main>
 
-  <!-- Kontakt -->
+  <!-- Sekcja Kontakt -->
   <section id="contact-section">
     <div class="contact-container">
-      <!-- Lewa kolumna: dane kontaktowe -->
       <div class="contact-left">
-        <h2>Skontaktuj się z nami</h2>
+        <h2><i class="fas fa-paper-plane" style="color:#3498db;"></i> Skontaktuj się z nami</h2>
         <p class="contact-description">
           Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w realizacji projektu
         </p>
@@ -186,7 +191,6 @@
           </li>
         </ul>
       </div>
-      <!-- Prawa kolumna: formularz kontaktowy -->
       <div class="contact-right">
         <form class="contact-form" action="submit_form.php" method="post">
           <div class="form-group">
@@ -202,7 +206,7 @@
             <input type="tel" name="phone" id="phone" placeholder="123 456 789" required>
           </div>
           <div class="form-group">
-            <label for="message">Wiadomość:</label>
+            <label for="message">Przekaż nam wiadomość:</label>
             <textarea name="message" id="message" placeholder="Treść wiadomości" required></textarea>
           </div>
           <button type="submit" class="btn-submit">Wyślij wiadomość</button>
@@ -222,6 +226,15 @@
       </p>
     </div>
   </footer>
+
+  <!-- Modal z komunikatem o sukcesie -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h2>Udało się!</h2>
+      <p>Udało się wysłać formularz, niedługo się z tobą skontaktujemy</p>
+      <button id="modal-button" class="modal-button">Super!</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
