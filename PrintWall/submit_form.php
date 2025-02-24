@@ -1,48 +1,80 @@
 <?php
-// submit_form.php
+header('Content-Type: text/plain; charset=utf-8');
 
-// Ustawienia połączenia z bazą danych – dostosuj poniższe dane do swojej konfiguracji
-$host = 'localhost';
-$db   = 'your_database';
-$user = 'your_username';
-$pass = 'your_password';
-$charset = 'utf8mb4';
+// Załaduj autoloader Composer
+require 'vendor/autoload.php';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$host     = 'localhost';
+$dbname   = 'twoja_baza';
+$username = 'twoj_uzytkownik';
+$password = 'twoje_haslo';
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Błąd połączenia z bazą danych: " . $e->getMessage());
+    die("Błąd połączenia: " . $e->getMessage());
 }
 
-// Sprawdzamy, czy formularz został przesłany metodą POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Pobieramy i filtrujemy dane
-    $name    = trim($_POST['name'] ?? '');
-    $phone   = trim($_POST['phone'] ?? '');
-    $email   = trim($_POST['email'] ?? '');
-    $message = trim($_POST['message'] ?? '');
-    $captcha = trim($_POST['captcha'] ?? '');
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Pobranie i oczyszczenie danych z formularza
+    $name    = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $email   = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $phone   = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
-    // Prosta walidacja captcha
-    if ($captcha !== '54723') {
-        die('Błędny kod captcha.');
+    // Walidacja pól
+    if (empty($name) || empty($email) || empty($phone) || empty($message)) {
+        die("Wszystkie pola są wymagane.");
     }
 
-    // Wstawiamy dane do bazy (upewnij się, że tabela "contacts" istnieje)
-    $stmt = $pdo->prepare('INSERT INTO contacts (name, phone, email, message) VALUES (?, ?, ?, ?)');
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Podano nieprawidłowy adres email.");
+    }
+
+    // Wstawianie danych do bazy
     try {
-        $stmt->execute([$name, $phone, $email, $message]);
-        echo "Dziękujemy za kontakt. Twoja wiadomość została wysłana.";
+        $sql  = "INSERT INTO orders (name, email, phone, message) VALUES (:name, :email, :phone, :message)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':name' => htmlspecialchars($name),
+            ':email' => htmlspecialchars($email),
+            ':phone' => htmlspecialchars($phone),
+            ':message' => htmlspecialchars($message)
+        ]);
     } catch (PDOException $e) {
-        die("Wystąpił błąd podczas zapisywania danych: " . $e->getMessage());
+        die("Błąd zapisu do bazy: " . $e->getMessage());
+    }
+
+    // Wysyłka wiadomości email przy użyciu PHPMailer
+    $mail = new PHPMailer(true);
+    try {
+        // Konfiguracja SMTP – uzupełnij danymi Twojego serwera SMTP
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.yourdomain.com'; // adres serwera SMTP
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'smtp_username';       // nazwa użytkownika SMTP
+        $mail->Password   = 'smtp_password';       // hasło SMTP
+        $mail->SMTPSecure = 'tls';                 // lub 'ssl'
+        $mail->Port       = 587;                   // lub 465, w zależności od konfiguracji
+
+        // Ustawienia nadawcy i odbiorcy
+        $mail->setFrom('no-reply@yourdomain.com', 'KLIENT');
+        $mail->addAddress('PrinWall@gmail.com'); // Twój adres, na który mają trafiać wiadomości
+        $mail->addReplyTo($email, $name);
+
+        // Treść maila
+        $mail->isHTML(false);
+        $mail->Subject = 'Nowa wiadomość z formularza kontaktowego';
+        $mail->Body    = "Imię i nazwisko: $name\nEmail: $email\nTelefon: $phone\nWiadomość: $message\n";
+
+        $mail->send();
+        echo "OK"; // Jeśli wszystko się udało – modal się pojawi
+    } catch (Exception $e) {
+        echo "Błąd: Nie udało się wysłać maila. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 ?>
