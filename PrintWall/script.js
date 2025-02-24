@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
     slideInterval = setInterval(nextSlide, 5000);
   }
 
-  /* Animacja napisu "PRINTWALL" */
   const printWall = document.querySelector('.printwall');
   if (printWall) {
     const printText = printWall.textContent.trim();
@@ -113,11 +112,36 @@ document.addEventListener('DOMContentLoaded', function () {
     console.warn('Nie znaleziono elementu .printwall');
   }
 
-  /* FAQ – rozwijanie/zwijanie odpowiedzi */
   const faqQuestions = document.querySelectorAll('.faq-question');
   faqQuestions.forEach(question => {
     question.addEventListener('click', function () {
       this.parentElement.classList.toggle('active');
     });
+  });
+
+  const contactForm = document.querySelector('.contact-form');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault(); 
+    const formData = new FormData(contactForm);
+
+    fetch('submit_form.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      const modal = document.getElementById('success-modal');
+      modal.classList.add('show');
+      contactForm.reset();
+    })
+    .catch(error => {
+      console.error('Błąd:', error);
+    });
+  });
+
+  const modalButton = document.getElementById('modal-button');
+  modalButton.addEventListener('click', function () {
+    const modal = document.getElementById('success-modal');
+    modal.classList.remove('show');
   });
 });
