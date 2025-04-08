@@ -1,29 +1,21 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const header = document.getElementById('main-header');
-  const slider = document.getElementById('slider');
-  const sliderHeight = slider.offsetHeight;
-
-  window.addEventListener('scroll', function () {
-    header.classList.toggle('scrolled', window.scrollY > 0);
-
-    if (window.scrollY < sliderHeight) {
-      header.style.backgroundColor = "rgba(255,255,255,0.8)";
-    } else {
-      header.style.backgroundColor = "#fff";
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  // Header scroll effect
+  const header = document.getElementById("main-header");
+  window.addEventListener("scroll", function () {
+    header.classList.toggle("scrolled", window.scrollY > 0);
   });
 
-  /* Slider – automatyczna zmiana slajdów oraz obsługa strzałek */
-  const slides = document.querySelectorAll('.slide');
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
+  // Slider
+  const slides = document.querySelectorAll(".slide");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
   let currentSlide = 0;
   const totalSlides = slides.length;
   let slideInterval = setInterval(nextSlide, 5000);
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
+      slide.classList.toggle("active", i === index);
     });
   }
 
@@ -37,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(currentSlide);
   }
 
-  rightArrow?.addEventListener('click', function () {
+  rightArrow.addEventListener("click", function () {
     nextSlide();
     resetInterval();
   });
 
-  leftArrow?.addEventListener('click', function () {
+  leftArrow.addEventListener("click", function () {
     prevSlide();
     resetInterval();
   });
@@ -52,14 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
     slideInterval = setInterval(nextSlide, 5000);
   }
 
-  const printWall = document.querySelector('.printwall');
+  // Animacja "PRINTWALL"
+  const printWall = document.querySelector(".printwall");
   if (printWall) {
     const printText = printWall.textContent.trim();
-    printWall.innerHTML = '';
-    printText.split('').forEach(letter => {
-      const span = document.createElement('span');
+    printWall.innerHTML = "";
+    printText.split("").forEach((letter) => {
+      const span = document.createElement("span");
       span.textContent = letter;
-      span.style.color = '#fff';
+      span.style.color = "#fff";
       printWall.appendChild(span);
     });
 
@@ -73,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const pauseBeforeColoring = 1000;
 
     function coloringWave() {
-      const letters = printWall.querySelectorAll('span');
-      letters.forEach(letter => letter.style.color = '#fff');
+      const letters = printWall.querySelectorAll("span");
+      letters.forEach((letter) => (letter.style.color = "#fff"));
       let index = 0;
       letters[index].style.color = randomColor();
 
@@ -93,11 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function whiteningWave() {
-      const letters = printWall.querySelectorAll('span');
+      const letters = printWall.querySelectorAll("span");
       let index = 0;
       function whiten() {
         if (index < letters.length) {
-          letters[index].style.color = '#fff';
+          letters[index].style.color = "#fff";
           index++;
           setTimeout(whiten, delay);
         } else {
@@ -108,40 +101,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     coloringWave();
-  } else {
-    console.warn('Nie znaleziono elementu .printwall');
   }
 
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function () {
-      this.parentElement.classList.toggle('active');
+  // FAQ
+  const faqQuestions = document.querySelectorAll(".faq-question");
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", function () {
+      this.parentElement.classList.toggle("active");
     });
   });
 
-  const contactForm = document.querySelector('.contact-form');
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault(); 
-    const formData = new FormData(contactForm);
+  // Formularz kontaktowy
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = contactForm.querySelector('input[name="email"]').value;
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Podaj poprawny adres email!");
+        return;
+      }
 
-    fetch('submit_form.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-      const modal = document.getElementById('success-modal');
-      modal.classList.add('show');
-      contactForm.reset();
-    })
-    .catch(error => {
-      console.error('Błąd:', error);
+      const formData = new FormData(contactForm);
+      fetch("submit_form.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          if (data.trim() === "OK") {
+            document.getElementById("success-modal").classList.add("show");
+            contactForm.reset();
+          } else {
+            alert("Błąd: " + data);
+          }
+        })
+        .catch((error) => {
+          console.error("Błąd:", error);
+          alert("Nie udało się wysłać formularza, spróbuj ponownie później.");
+        });
     });
-  });
 
-  const modalButton = document.getElementById('modal-button');
-  modalButton.addEventListener('click', function () {
-    const modal = document.getElementById('success-modal');
-    modal.classList.remove('show');
-  });
+    const modalButton = document.getElementById("modal-button");
+    if (modalButton) {
+      modalButton.addEventListener("click", function () {
+        document.getElementById("success-modal").classList.remove("show");
+      });
+    }
+  }
 });
