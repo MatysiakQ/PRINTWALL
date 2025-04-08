@@ -125,36 +125,41 @@ document.addEventListener("DOMContentLoaded", function () {
     
     /* Obsługa formularza kontaktowego */
     const contactForm = document.querySelector(".contact-form");
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(contactForm);
-    
-        fetch("submit_form.php", {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.text())
-          .then((data) => {
-            if (data.trim() === "OK") {
-              document.getElementById("success-modal").classList.add("show");
-              contactForm.reset();
-            } else {
-              alert("Błąd: " + data);
-            }
-          })
-          .catch((error) => {
-            console.error("Błąd:", error);
-            alert("Nie udało się wysłać formularza, spróbuj ponownie później.");
-          });
-      });
-    
-      const modalButton = document.getElementById("modal-button");
-      if (modalButton) {
-        modalButton.addEventListener("click", function () {
-          document.getElementById("success-modal").classList.remove("show");
-        });
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = contactForm.querySelector('input[name="email"]').value;
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Podaj poprawny adres email!");
+        return;
       }
+
+      const formData = new FormData(contactForm);
+      fetch("submit_form.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          if (data.trim() === "OK") {
+            document.getElementById("success-modal").classList.add("show");
+            contactForm.reset();
+          } else {
+            alert("Błąd: " + data);
+          }
+        })
+        .catch((error) => {
+          console.error("Błąd:", error);
+          alert("Nie udało się wysłać formularza, spróbuj ponownie później.");
+        });
+    });
+
+    const modalButton = document.getElementById("modal-button");
+    if (modalButton) {
+      modalButton.addEventListener("click", function () {
+        document.getElementById("success-modal").classList.remove("show");
+      });
     }
+  }
   });
   
