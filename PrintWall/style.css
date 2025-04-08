@@ -194,7 +194,6 @@ body {
 .tile-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* Zwiększony odstęp między kafelkami */
   gap: 50px;
   max-width: 800px;
   margin: 0 auto 80px;
@@ -233,7 +232,7 @@ body {
 
 /* --- Dlaczego warto wybrać nadruk ścienny --- */
 #why-choose {
-  padding: 80px 20px;
+  padding: 60px 20px 40px 20px;
 }
 .why-tile-container {
   display: grid;
@@ -266,7 +265,7 @@ body {
 .why-tile .tile-description {
   font-size: 1rem;
 }
-/* Dodane style dla ikon w kafelkach */
+
 .why-tile i {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -282,7 +281,7 @@ body {
 .faq-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 80px;
+  gap: 150px;  /* Zwiększony odstęp między sekcjami FAQ */
   max-width: 1000px;
   margin: 0 auto 80px;
 }
@@ -353,8 +352,8 @@ body {
 .contact-left {
   display: flex;
   flex-direction: column;
-  /* Zmniejszony odstęp między nagłówkiem a opisem */
   gap: 10px;
+  padding: 70px 20px;
 }
 .contact-left h2 {
   font-size: 2rem;
@@ -437,13 +436,12 @@ body {
   background-color: #2980b9;
 }
 
-/* Wyśrodkowanie etykiety "Wiadomość" */
 .contact-form label[for="message"] {
   display: block;
   text-align: center;
 }
 
-/* --- Nowa Stopka --- */
+/* --- Stopka --- */
 #main-footer {
   width: 100%;
   background-color: #111;
@@ -516,7 +514,6 @@ body {
 }
 
 /* --- Responsywność --- */
-/* Oryginalny blok */
 @media (max-width: 768px) {
   .contact-container {
     grid-template-columns: 1fr;
@@ -527,7 +524,6 @@ body {
   }
 }
 
-/* --- Responsywność Całej Strony --- */
 @media (max-width: 1024px) {
   .header-container {
     padding: 0 40px;
