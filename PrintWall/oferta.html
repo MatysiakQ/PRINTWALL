@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oferta - PrintWall</title>
+  <link rel="stylesheet" href="oferta.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="oferta.js" defer></script>
+  <link rel="icon" type="image/png" href="samologo.png" />
+</head>
+<body>
+  <!-- HEADER (tak jak na głównej, ale po przewinięciu) -->
+  <header id="main-header" class="scrolled">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <img src="samologo.png" alt="Logo" />
+          <span class="logo-text">
+            <span class="printwall">PRINTWALL</span>
+          </span>
+        </div>
+      </div>
+      <nav class="header-center">
+        <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
+        <a href="oferta.html" class="nav-link">OFERTA</a>
+        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+        <a href="#contact-section" class="nav-link">KONTAKT</a>
+      </nav>
+      <div class="header-right">
+        <a href="order.html" class="order-button">ZAMÓW</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PANEL SOCIAL MEDIA -->
+  <div class="social-panel">
+    <a href="https://instagram.com/PrintWall" target="_blank" class="social-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://facebook.com/PrintWall" target="_blank" class="social-icon">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://linkedin.com/in/PrintWall" target="_blank" class="social-icon">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://youtube.com/PrintWall" target="_blank" class="social-icon">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+
+  <section class="offer-details white-background">
+    <div class="text-content">
+      <h2>Oferta druku na białej ścianie</h2>
+      <ul class="pricing-options">
+        <li><strong>Standard:</strong> 300 zł/m<sup>2</sup></li>
+        <li><strong>Premium:</strong> 350 zł/m<sup>2</sup></li>
+        <li><strong>Deluxe:</strong> 400 zł/m<sup>2</sup></li>
+      </ul>
+      <div class="faq-item">
+         <div class="faq-question">Co wchodzi w cenę?</div>
+         <div class="faq-answer">
+            <h4>W cenę wchodzi:</h4>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+         </div>
+      </div>
+    </div>
+    <div class="image-content">
+      <img src="ofertaprzyklad1.jpg" alt="Drukowanie na białej ścianie" />
+    </div>
+  </section>
+
+  <section class="offer-details colored-background">
+    <div class="image-content">
+      <img src="ofertaprzyklad2.jpg" alt="Drukowanie na kolorowej ścianie" />
+    </div>
+    <div class="text-content">
+      <h2>Oferta na kolorowej ścianie</h2>
+      <ul class="pricing-options">
+        <li><strong>Standard:</strong> 300 zł/m<sup>2</sup></li>
+        <li><strong>Premium:</strong> 350 zł/m<sup>2</sup></li>
+        <li><strong>Deluxe:</strong> 400 zł/m<sup>2</sup></li>
+      </ul>
+      <div class="faq-item">
+         <div class="faq-question">Co wchodzi w cenę?</div>
+         <div class="faq-answer">
+           <h4>W cenę wchodzi:</h4>
+           <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+           </ul>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKCJA KONTAKT -->
+  <section id="contact-section">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h2>
+          <i class="fas fa-paper-plane" style="color:#3498db;"></i> 
+          Skontaktuj się z nami
+        </h2>
+        <p class="contact-description">
+          Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w realizacji projektu.
+        </p>
+        <ul class="contact-info">
+          <li><i class="fas fa-phone"></i><span>+48 505 437 439</span></li>
+          <li><i class="fas fa-envelope"></i><span>PrintWall@gmail.com</span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>ul. Nadbystrzycka 89, 20-503 Lublin</span></li>
+        </ul>
+      </div>
+      <div class="contact-right">
+        <form class="contact-form" action="submit_form.php" method="post">
+          <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" name="name" id="name" placeholder="Jan Kowalski" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="example@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" name="phone" id="phone" maxlength="9" placeholder="987654321" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Przekaż nam wiadomość:</label>
+            <textarea name="message" id="message" placeholder="Treść wiadomości" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo"><p>PrintWall</p></div>
+      <p class="footer-copy">&copy; 2025 PrintWall. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h2>Udało się!</h2>
+      <p>Udało się wysłać formularz, niedługo się z Tobą skontaktujemy.</p>
+      <button id="modal-button" class="modal-button">Super!</button>
+    </div>
+  </div>
+</body>
+</html>
