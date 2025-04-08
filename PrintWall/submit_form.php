@@ -7,18 +7,21 @@ require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$host     = 'localhost';
-$dbname   = 'twoja_baza';
-$username = 'twoj_uzytkownik';
-$password = 'twoje_haslo';
+// Dane do połączenia z bazą danych – UZUPEŁNIJ SWOJE DANE!
+$host     = 'localhost';           // Zazwyczaj 'localhost'
+$dbname   = 'twoja_baza';          // Nazwa Twojej bazy danych
+$username = 'twoj_uzytkownik';    // Twój użytkownik bazy danych
+$password = 'twoje_haslo';        // Twoje hasło do bazy danych
 
+// Połączenie z bazą danych
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Błąd połączenia: " . $e->getMessage());
+    die("Błąd połączenia z bazą danych: " . $e->getMessage());
 }
 
+// Sprawdzenie, czy formularz został wysłany
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Pobranie i oczyszczenie danych z formularza
     $name    = isset($_POST['name']) ? trim($_POST['name']) : '';
@@ -35,46 +38,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Podano nieprawidłowy adres email.");
     }
 
-    // Wstawianie danych do bazy
+    // Zapis do bazy danych
     try {
         $sql  = "INSERT INTO orders (name, email, phone, message) VALUES (:name, :email, :phone, :message)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':name' => htmlspecialchars($name),
-            ':email' => htmlspecialchars($email),
-            ':phone' => htmlspecialchars($phone),
-            ':message' => htmlspecialchars($message)
+            ':name'    => $name,
+            ':email'   => $email,
+            ':phone'   => $phone,
+            ':message' => $message
         ]);
     } catch (PDOException $e) {
-        die("Błąd zapisu do bazy: " . $e->getMessage());
+        die("Błąd zapisu do bazy danych: " . $e->getMessage());
     }
 
-    // Wysyłka wiadomości email przy użyciu PHPMailer
+    // Wysyłka emaila za pomocą PHPMailera
     $mail = new PHPMailer(true);
     try {
-        // Konfiguracja SMTP – uzupełnij danymi Twojego serwera SMTP
+        // Konfiguracja SMTP – UZUPEŁNIJ SWOJE DANE!
         $mail->isSMTP();
-        $mail->Host       = 'smtp.yourdomain.com'; // adres serwera SMTP
+        $mail->Host       = 'smtp.example.com';        // Adres serwera SMTP (np. smtp.gmail.com dla Gmaila)
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'smtp_username';       // nazwa użytkownika SMTP
-        $mail->Password   = 'smtp_password';       // hasło SMTP
-        $mail->SMTPSecure = 'tls';                 // lub 'ssl'
-        $mail->Port       = 587;                   // lub 465, w zależności od konfiguracji
+        $mail->Username   = 'twoj_email@example.com';  // Twój email SMTP
+        $mail->Password   = 'twoje_haslo';            // Twoje hasło SMTP (lub hasło aplikacji dla Gmaila)
+        $mail->SMTPSecure = 'tls';                    // 'tls' lub 'ssl'
+        $mail->Port       = 587;                      // Port SMTP (587 dla TLS, 465 dla SSL)
 
         // Ustawienia nadawcy i odbiorcy
-        $mail->setFrom('no-reply@yourdomain.com', 'KLIENT');
-        $mail->addAddress('PrinWall@gmail.com'); // Twój adres, na który mają trafiać wiadomości
-        $mail->addReplyTo($email, $name);
+        $mail->setFrom('no-reply@twojadomena.com', 'Formularz Kontaktowy');
+        $mail->addAddress('PrinWall@gmail.com');      // Twój email, na który mają przychodzić wiadomości
+        $mail->addReplyTo($email, $name);             // Odpowiedź będzie kierowana na email użytkownika
 
-        // Treść maila
-        $mail->isHTML(false);
+        // Treść emaila
+        $mail->isHTML(false);                         // Format tekstowy
         $mail->Subject = 'Nowa wiadomość z formularza kontaktowego';
         $mail->Body    = "Imię i nazwisko: $name\nEmail: $email\nTelefon: $phone\nWiadomość: $message\n";
 
         $mail->send();
-        echo "OK"; // Jeśli wszystko się udało – modal się pojawi
+        echo "OK"; // Sukces – wyświetli się modal w JS
     } catch (Exception $e) {
-        echo "Błąd: Nie udało się wysłać maila. Mailer Error: {$mail->ErrorInfo}";
+        echo "Błąd: Nie udało się wysłać emaila. Szczegóły: {$mail->ErrorInfo}";
     }
 }
 ?>
