@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio PrintWall – zobacz nasze realizacje i skontaktuj się z nami!">
+  <title>Portfolio - PrintWall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Portfolio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" href="samologo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <img src="samologo.png" alt="Logo PrintWall">
+          <span class="logo-text"><span class="printwall">PRINTWALL</span></span>
+        </div>
+      </div>
+      <nav class="header-center">
+        <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
+        <a href="oferta.html" class="nav-link">OFERTA</a>
+        <a href="Portfolio.html" class="nav-link active">PORTFOLIO</a>
+      </nav>
+      <div class="header-right">
+        <a href="#contact-section" class="order-button">KONTAKT</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Panel Social Media -->
+  <div class="social-panel">
+    <a href="https://instagram.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://linkedin.com/in/PrintWall" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://youtube.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <!-- Sekcja Logo -->
+  <section class="portfolio-logo-section">
+    <div class="logo-container">
+      <img src="samologo.png" alt="PrintWall Logo">
+      <h1>PRINTWALL</h1>
+      <h2>Krzysztof Jastrzebski</h2>
+    </div>
+  </section>
+
+  <!-- Sekcja Portfolio -->
+  <section class="portfolio-works">
+    <div class="works-container">
+      <h2>Nasze Prace</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-tile" data-client="Jan Kowalski" data-note="Druk na białej ścianie w salonie">
+          <img src="TloSekcji.jpg" alt="Praca 1 – Druk na białej ścianie">
+          <div class="tile-caption">
+            <p>Praca 1</p>
+            <p class="tile-date">2025-04-08</p>
+          </div>
+        </div>
+        <div class="portfolio-tile" data-client="Anna Nowak" data-note="Kolorowy mural w biurze">
+          <img src="TloSekcji.jpg" alt="Praca 2 – Kolorowy mural">
+          <div class="tile-caption">
+            <p>Praca 2</p>
+            <p class="tile-date">2025-04-08</p>
+          </div>
+        </div>
+        <div class="portfolio-tile" data-client="Piotr Zieliński" data-note="Dekoracja sypialni">
+          <img src="TloSekcji.jpg" alt="Praca 3 – Dekoracja sypialni">
+          <div class="tile-caption">
+            <p>Praca 3</p>
+            <p class="tile-date">2025-04-08</p>
+          </div>
+        </div>
+        <div class="portfolio-tile" data-client="Ewa Wiśniewska" data-note="Logo na ścianie w restauracji">
+          <img src="TloSekcji.jpg" alt="Praca 4 – Logo w restauracji">
+          <div class="tile-caption">
+            <p>Praca 4</p>
+            <p class="tile-date">2025-04-08</p>
+          </div>
+        </div>
+        <div class="portfolio-tile" data-client="Marek Dudek" data-note="Abstrakcyjny wzór w holu">
+          <img src="TloSekcji.jpg" alt="Praca 5 – Abstrakcyjny wzór">
+          <div class="tile-caption">
+            <p>Praca 5</p>
+            <p class="tile-date">2025-04-08</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="work-modal" class="modal">
+    <div class="modal-content polaroid">
+      <span id="modal-close" class="modal-close" aria-label="Zamknij modal">×</span>
+      <div class="image-container">
+        <img id="modal-image" src="" alt="Powiększona Praca">
+      </div>
+      <div class="modal-caption">
+        <div class="info">
+          <span class="date">Data: <span id="modal-date"></span></span>
+          <span class="client">Klient: <span id="modal-client"></span></span>
+        </div>
+        <p id="modal-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekcja Kontakt -->
+  <section id="contact-section">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h2><i class="fas fa-paper-plane"></i> Skontaktuj się z nami</h2>
+        <p class="contact-description">Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w realizacji projektu</p>
+        <ul class="contact-info">
+          <li><i class="fas fa-phone"></i><span>+48 505 437 439</span></li>
+          <li><i class="fas fa-envelope"></i><span><a href="mailto:PrinWall@gmail.com">PrinWall@gmail.com</a></span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>ul. Nadbystrzycka 89, 20-503 Lublin</span></li>
+        </ul>
+      </div>
+      <div class="contact-right"> 
+        <form class="contact-form" action="submit_form.php" method="post">
+          <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" name="name" id="name" placeholder="Jan Kowalski" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="example@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" name="phone" id="phone" placeholder="987 654 321" minlength="9" maxlength="9" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Przekaż nam wiadomość:</label>
+            <textarea name="message" id="message" placeholder="Treść wiadomości" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stopka -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo"><p>PrintWall</p></div>
+      <p class="footer-copy">© 2025 PrintWall. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <!-- Modal z komunikatem o sukcesie -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h2>Udało się!</h2>
+      <p>Formularz został wysłany. Niedługo się z Tobą skontaktujemy.</p>
+      <button id="modal-button" class="modal-button">Super!</button>
+    </div>
+  </div>
+
+  <!-- Skrypt -->
+  <script src="portfolio.js" defer></script>
+</body>
+</html>
