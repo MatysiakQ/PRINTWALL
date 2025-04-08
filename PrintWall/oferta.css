@@ -1,4 +1,4 @@
-/* Globalne style */
+/* GLOBALNE USTAWIENIA */
 * {
   margin: 0;
   padding: 0;
@@ -11,10 +11,10 @@ body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
   background-color: #fff;
-  padding-top: 70px; 
+  padding-top: 70px;
 }
 
-/* --- Header --- */
+/* HEADER */
 #main-header {
   position: fixed;
   top: 0;
@@ -27,21 +27,21 @@ body {
   z-index: 1000;
 }
 .header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
   height: 100%;
 }
-.header-left {
+.header-left, .header-right {
   flex: 0 0 auto;
 }
 .header-center {
   flex: 1;
   text-align: center;
-}
-.header-right {
-  flex: 0 0 auto;
 }
 .logo {
   display: flex;
@@ -57,31 +57,28 @@ body {
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
-  display: flex;
   font-family: 'Mood Tracker';
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .logo-text .printwall {
   color: #fff;
 }
-
-/* --- Nawigacja --- */
-.header-center .nav-link {
+.nav-link {
   text-decoration: none;
   color: #000;
-  font-size: 1rem;
   margin: 0 10px;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
-.header-center .nav-link:hover {
-  color: #555;
+.nav-link:hover, .nav-link.active {
+  color: #3498db;
 }
 .order-button {
   background-color: #3498db;
   color: #fff;
-  text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
+  text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
@@ -89,7 +86,7 @@ body {
   background-color: #2980b9;
 }
 
-/* --- Panel Social Media --- */
+/* PANEL SOCIAL MEDIA */
 .social-panel {
   position: fixed;
   top: 50%;
@@ -112,7 +109,6 @@ body {
   text-decoration: none;
   font-size: 1.2rem;
   transition: transform 0.8s ease;
-  margin: 5px;
 }
 .social-icon:hover {
   transform: rotate(360deg);
@@ -122,72 +118,48 @@ body {
 .social-icon:nth-child(3) { background-color: #007bb5; }
 .social-icon:nth-child(4) { background-color: #bb0000; }
 
-/* --- Oferta Szczegóły --- */
+/* SEKCJA OFERTY */
 .offer-details {
+  width: 100%;
+  padding: 40px 10px;
+}
+.offer-inner-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px 10px;  
   gap: 20px;
-  min-height: 600px;
-}
-.white-background {
-  background-color: #f5f5f5;
-}
-.colored-background {
-  background-color: #ddd;
-}
-.text-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   padding: 0 20px;
 }
-.text-content h3 {
-  margin-bottom: 10px;
-}
-.image-content img {
-  max-width: 100%;
-  height: auto;
+.text-content, .image-content {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 250px;
+  padding: 20px;
 }
-
-/* Pricing Options */
+.text-content h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
 .pricing-options {
   list-style: none;
-  padding: 0;
-  margin: 15px 0;
+  margin-bottom: 20px;
   font-size: 1.1rem;
 }
 .pricing-options li {
-  margin: 5px 0;
+  margin: 8px 0;
 }
-
-/* --- Accordion (FAQ) --- */
 .faq-item {
-  margin-bottom: 20px;
-  width: 300px;  /* Stała szerokość rozwijaka */
+  margin-top: 20px;
+  max-width: 300px;
 }
 .faq-question {
-  display: block;        
-  width: 100%;
   background-color: #fff;
   color: #000;
   padding: 15px 10px;
   cursor: pointer;
   border-radius: 20px;
   position: relative;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  border: 0px solid #3498db;
-  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .faq-question:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
@@ -209,16 +181,15 @@ body {
 .faq-answer {
   padding: 10px;
   color: #333;
+  font-size: 0.95rem;
   display: none;
-  margin: 10px 0;  /* Usunięty lewy margines, aby nie wpływał na szerokość */
-  font-size: 13px;
-  box-sizing: border-box;
+  margin-top: 10px;
 }
 .faq-item.active .faq-answer {
   display: block;
 }
 
-/* --- SEKCJA KONTAKT --- */
+/* SEKCJA KONTAKT */
 #contact-section {
   width: 100%;
   background-color: #f9f9f9;
@@ -235,7 +206,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 70px 10px;
+  padding: 70px 20px;
 }
 .contact-left h2 {
   font-size: 2rem;
@@ -262,7 +233,7 @@ body {
 .contact-info li {
   display: flex;
   align-items: center;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 .contact-info li i {
   color: #3498db;
@@ -280,7 +251,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.contact-form .form-group {
+.form-group {
   margin-bottom: 20px;
 }
 .contact-form label {
@@ -318,22 +289,18 @@ body {
   background-color: #2980b9;
 }
 
-.contact-form label[for="message"] {
-  display: block;
-  text-align: center;
-}
-
-/* --- Stopka --- */
+/* STOPKA */
 #main-footer {
-  width: 100%;
   background-color: #111;
   color: #fff;
   padding: 30px 0;
   text-align: center;
 }
 .footer-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 .footer-logo {
   margin-bottom: 10px;
@@ -345,14 +312,14 @@ body {
   color: #ccc;
 }
 
-/* --- Modal --- */
+/* MODAL FORMULARZA */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -370,17 +337,15 @@ body {
   padding: 20px 30px;
   border-radius: 8px;
   text-align: center;
-  position: relative;
 }
 .modal-content h2 {
-  color: blue;
+  color: #3498db;
   margin-bottom: 10px;
 }
 .modal-content p {
-  color: white;
+  color: #333;
   font-size: 1rem;
   margin-bottom: 20px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .modal-button {
   background-color: #3498db;
@@ -389,20 +354,25 @@ body {
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  display: block;
-  margin: 0 auto; 
+  transition: background-color 0.3s ease;
 }
 .modal-button:hover {
   background-color: #2980b9;
 }
 
-/* --- Responsywność --- */
+/* RESPONSYWNOŚĆ */
 @media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .header-center {
+    margin: 10px 0;
+  }
+  .offer-inner-container {
+    flex-direction: column;
+  }
   .contact-container {
     grid-template-columns: 1fr;
-  }
-  .contact-left,
-  .contact-right {
-    margin-bottom: 40px;
   }
 }
