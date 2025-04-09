@@ -1,376 +1,156 @@
-/* GLOBALNE USTAWIENIA */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
-  background-color: #fff;
-  padding-top: 70px;
-}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oferta PrintWall – druk na ścianach i więcej. Skontaktuj się z nami!">
+  <title>Oferta - PrintWall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="oferta.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" href="samologo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <img src="samologo.png" alt="Logo PrintWall">
+          <span class="logo-text"><span class="printwall">PRINTWALL</span></span>
+        </div>
+      </div>
+      <nav class="header-center">
+        <a href="index.html" class="nav-link">STRONA GŁÓWNA</a>
+        <a href="oferta.html" class="nav-link active">OFERTA</a>
+        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+      </nav>
+      <div class="header-right">
+        <a href="#contact-section" class="order-button">KONTAKT</a>
+      </div>
+    </div>
+  </header>
 
-/* HEADER */
-#main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-.header-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-.header-left, .header-right {
-  flex: 0 0 auto;
-}
-.header-center {
-  flex: 1;
-  text-align: center;
-}
-.logo {
-  display: flex;
-  align-items: center;
-}
-.logo img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  margin-right: 10px;
-  border-radius: 50%;
-}
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: 'Mood Tracker';
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-.logo-text .printwall {
-  color: #fff;
-}
-.nav-link {
-  text-decoration: none;
-  color: #000;
-  margin: 0 10px;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-.nav-link:hover, .nav-link.active {
-  color: #3498db;
-}
-.order-button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-.order-button:hover {
-  background-color: #2980b9;
-}
+  <!-- Panel Social Media -->
+  <div class="social-panel">
+    <a href="https://instagram.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://linkedin.com/in/PrintWall" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://youtube.com/PrintWall" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+  </div>
 
-/* PANEL SOCIAL MEDIA */
-.social-panel {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  z-index: 1000;
-}
-.social-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: transform 0.8s ease;
-}
-.social-icon:hover {
-  transform: rotate(360deg);
-}
-.social-icon:nth-child(1) { background-color: #E4405F; }
-.social-icon:nth-child(2) { background-color: #3B5998; }
-.social-icon:nth-child(3) { background-color: #007bb5; }
-.social-icon:nth-child(4) { background-color: #bb0000; }
+  <!-- Oferta druku na białej ścianie -->
+  <section class="offer-details white-background">
+    <div class="offer-inner-container">
+      <div class="text-content">
+        <h2>Oferta druku na białej ścianie</h2>
+        <ul class="pricing-options">
+          <li><strong>Standard:</strong> 300 zł/m<sup>2</sup></li>
+          <li><strong>Premium:</strong> 350 zł/m<sup>2</sup></li>
+          <li><strong>Deluxe:</strong> 400 zł/m<sup>2</sup></li>
+        </ul>
+        <div class="faq-item">
+          <div class="faq-question">Co wchodzi w cenę?</div>
+          <div class="faq-answer">
+            <h4>W cenę wchodzi:</h4>
+            <ul>
+              <li>Przygotowanie grafiki</li>
+              <li>Druk wysokiej jakości</li>
+              <li>Montaż na miejscu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="image-content">
+        <img src="ofertaprzyklad1.jpg" alt="Drukowanie na białej ścianie">
+      </div>
+    </div>
+  </section>
 
-/* SEKCJA OFERTY */
-.offer-details {
-  width: 100%;
-  padding: 40px 10px;
-  margin-bottom: 40px;
-}
-.offer-details.white-background {
-  background-color: #f9f9f9;
-}
-.offer-details.colored-background {
-  background-color: #f5f5dc;
-}
-.offer-inner-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 120px;
-  padding: 20px;
-}
-.text-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: center;
-}
-.image-content {
-  flex: 1;
-  padding: 20px;
-}
-.text-content h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
-}
-.pricing-options {
-  list-style: none;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-  text-align: left;
-}
-.pricing-options li {
-  margin: 8px 0;
-}
-.faq-item {
-  margin-top: 20px;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.faq-question {
-  background-color: #fff;
-  color: #000;
-  padding: 15px 10px;
-  cursor: pointer;
-  border-radius: 20px;
-  position: relative;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-}
-.faq-question:hover {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-.faq-question::after {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  content: "\f107";
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.3s ease;
-  color: #3498db;
-}
-.faq-item.active .faq-question::after {
-  content: "\f106";
-}
-.faq-answer {
-  padding: 10px;
-  color: #333;
-  font-size: 0.95rem;
-  display: none;
-  margin-top: 10px;
-  text-align: left;
-}
-.faq-item.active .faq-answer {
-  display: block;
-}
+  <!-- Oferta druku na kolorowej ścianie -->
+  <section class="offer-details colored-background">
+    <div class="offer-inner-container">
+      <div class="image-content">
+        <img src="ofertaprzyklad2.jpg" alt="Drukowanie na kolorowej ścianie">
+      </div>
+      <div class="text-content">
+        <h2>Oferta na kolorowej ścianie</h2>
+        <ul class="pricing-options">
+          <li><strong>Standard:</strong> 300 zł/m<sup>2</sup></li>
+          <li><strong>Premium:</strong> 350 zł/m<sup>2</sup></li>
+          <li><strong>Deluxe:</strong> 400 zł/m<sup>2</sup></li>
+        </ul>
+        <div class="faq-item">
+          <div class="faq-question">Co wchodzi w cenę?</div>
+          <div class="faq-answer">
+            <h4>W cenę wchodzi:</h4>
+            <ul>
+              <li>Konsultacja projektowa</li>
+              <li>Druk full-color</li>
+              <li>Montaż oraz wykończenie</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* SEKCJA KONTAKT */
-#contact-section {
-  width: 100%;
-  background-color: #f9f9f9;
-  padding: 60px 20px;
-}
-.contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-.contact-left {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 70px 20px;
-}
-.contact-left h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
-  display: flex;
-  align-items: center;
-}
-.contact-left h2 i {
-  margin-right: 10px;
-  color: #3498db;
-}
-.contact-description {
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #666;
-}
-.contact-info {
-  list-style: none;
-  font-size: 1rem;
-  color: #333;
-  margin-top: 20px;
-}
-.contact-info li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-}
-.contact-info li i {
-  color: #3498db;
-  margin-right: 10px;
-  font-size: 1.2rem;
-}
-.contact-right {
-  display: flex;
-  align-items: center;
-}
-.contact-form {
-  width: 100%;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.form-group {
-  margin-bottom: 20px;
-}
-.contact-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-  color: #333;
-}
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form input[type="tel"],
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.contact-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-.btn-submit {
-  width: 100%;
-  background-color: #3498db;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.btn-submit:hover {
-  background-color: #2980b9;
-}
+  <!-- Sekcja Kontakt -->
+  <section id="contact-section">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h2><i class="fas fa-paper-plane"></i> Skontaktuj się z nami</h2>
+        <p class="contact-description">Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w realizacji projektu</p>
+        <ul class="contact-info">
+          <li><i class="fas fa-phone"></i><span>+48 505 437 439</span></li>
+          <li><i class="fas fa-envelope"></i><span><a href="mailto:PrintWall@gmail.com">PrintWall@gmail.com</a></span></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>ul. Nadbystrzycka 89, 20-503 Lublin</span></li>
+        </ul>
+      </div>
+      <div class="contact-right">
+        <form class="contact-form" action="submit_form.php" method="post">
+          <div class="form-group">
+            <label for="name">Imię i nazwisko:</label>
+            <input type="text" name="name" id="name" placeholder="Jan Kowalski" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="example@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" name="phone" id="phone" placeholder="987 654 321" minlength="9" maxlength="9" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Przekaż nam wiadomość:</label>
+            <textarea name="message" id="message" placeholder="Treść wiadomości" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-/* --- Stopka --- */
-#main-footer {
-  background-color: #111;
-  color: #fff;
-  padding: 30px 0;
-  text-align: center;
-}
-.footer-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.footer-logo {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.footer-copy {
-  font-size: 0.9rem;
-  color: #ccc;
-}
+  <!-- Stopka -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-logo">PRINTWALL</div>
+      <div class="footer-copy">&copy; 2025 PrintWall. Wszelkie prawa zastrzeżone.</div>
+    </div>
+  </footer>
 
-/* --- Modal formularza --- */
-#form-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 3000;
-}
-#form-modal.show {
-  visibility: visible;
-  opacity: 1;
-}
-#form-modal .modal-content {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 90%;
-}
-#form-modal .modal-content #form-modal-icon {
-  font-size: 50px;
-  margin-bottom: 10px;
-}
-#form-modal .modal-content p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-#form-modal .modal-content button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-}
+  <!-- Globalny modal formularza -->
+  <div id="form-modal">
+    <div class="modal-content">
+      <div id="form-modal-icon"></div>
+      <p id="form-modal-text"></p>
+      <button id="form-modal-button"></button>
+    </div>
+  </div>
+
+  <!-- Skrypty -->
+  <script src="oferta.js"></script>
+  <script src="script.js"></script>
+  <script src="Portfolio.js"></script>
+</body>
+</html>
