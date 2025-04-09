@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     header.classList.toggle("scrolled", window.scrollY > 0);
   });
+
+  // Animacja printWall (jeśli obecna)
   const printWall = document.querySelector(".printwall");
   if (printWall) {
     const printText = printWall.textContent.trim();
@@ -61,39 +63,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     coloringWave();
   }
-  // Modal portfolio
+
+  // Modal portfolio z zabezpieczeniem
   const tiles = document.querySelectorAll(".portfolio-tile");
   const modalOverlay = document.getElementById("work-modal");
   const modalImage = document.getElementById("modal-image");
   const closeBtn = document.getElementById("modal-close");
 
-  tiles.forEach(tile => {
-    tile.addEventListener("click", function () {
-      const imgSrc = this.querySelector("img").src;
-      const date = this.querySelector(".tile-date").textContent;
-      const client = this.getAttribute("data-client") || "Brak informacji";
-      const note = this.getAttribute("data-note") || "Brak notatki";
+  if (tiles.length > 0 && modalOverlay && modalImage && closeBtn) {
+    tiles.forEach(tile => {
+      tile.addEventListener("click", function () {
+        const imgSrc = this.querySelector("img").src;
+        const date = this.querySelector(".tile-date").textContent;
+        const client = this.getAttribute("data-client") || "Brak informacji";
+        const note = this.getAttribute("data-note") || "Brak notatki";
 
-      modalImage.src = imgSrc;
-      document.getElementById("modal-date").textContent = date;
-      document.getElementById("modal-client").textContent = client;
-      document.getElementById("modal-note").textContent = note;
+        modalImage.src = imgSrc;
+        document.getElementById("modal-date").textContent = date;
+        document.getElementById("modal-client").textContent = client;
+        document.getElementById("modal-note").textContent = note;
 
-      modalOverlay.classList.add("show");
+        modalOverlay.classList.add("show");
+      });
     });
-  });
 
-  closeBtn.addEventListener("click", function () {
-    modalOverlay.classList.remove("show");
-  });
-
-  modalOverlay.addEventListener("click", function (e) {
-    if (e.target === modalOverlay) {
+    closeBtn.addEventListener("click", function () {
       modalOverlay.classList.remove("show");
-    }
-  });
+    });
 
-  // Formularz kontaktowy
+    modalOverlay.addEventListener("click", function (e) {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.remove("show");
+      }
+    });
+  }
+
+  // Formularz kontaktowy (gdy obecny)
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
