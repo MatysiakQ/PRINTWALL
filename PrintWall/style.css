@@ -86,7 +86,6 @@ body {
 .nav-link.active, .nav-link:hover {
   color: #3498db;
 }
-
 .order-button {
   background-color: #3498db;
   color: #fff;
@@ -226,7 +225,7 @@ body {
   color: inherit;
 }
 
-/* Zwiększenie rozmiaru ikon i tekstu w sekcji "Na jakiej powierzchni drukujemy?" */
+/* Zwiększenie rozmiaru ikon w sekcji "Na jakiej powierzchni drukujemy?" */
 #surfaces .tile i {
   font-size: 2.5rem;
 }
@@ -234,7 +233,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* --- Dlaczego warto wybrać nadruk ścienny --- */
+/* --- Sekcja "Dlaczego warto wybrać nadruk ścienny" --- */
 #why-choose {
   padding: 60px 20px 40px 20px;
 }
@@ -253,6 +252,8 @@ body {
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   min-height: 250px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -269,7 +270,6 @@ body {
 .why-tile .tile-description {
   font-size: 1rem;
 }
-
 .why-tile i {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -285,7 +285,7 @@ body {
 .faq-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 150px;  /* Zwiększony odstęp między sekcjami FAQ */
+  gap: 150px;
   max-width: 1000px;
   margin: 0 auto 80px;
 }
@@ -310,7 +310,7 @@ body {
   border-radius: 20px;
   position: relative;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  border: 0px solid #3498db;
+  text-align: center;
 }
 .faq-question:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
@@ -332,15 +332,16 @@ body {
 .faq-answer {
   padding: 10px;
   color: #333;
+  font-size: 0.95rem;
   display: none;
-  margin: 10px 0 10px 20px;
-  font-size: 13px;
+  margin-top: 10px;
+  text-align: left;
 }
 .faq-item.active .faq-answer {
   display: block;
 }
 
-/* --- Nowa Sekcja: Kontakt --- */
+/* --- Sekcja Kontakt --- */
 #contact-section {
   width: 100%;
   background-color: #f9f9f9;
@@ -384,7 +385,7 @@ body {
 .contact-info li {
   display: flex;
   align-items: center;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 .contact-info li i {
   color: #3498db;
@@ -440,22 +441,18 @@ body {
   background-color: #2980b9;
 }
 
-.contact-form label[for="message"] {
-  display: block;
-  text-align: center;
-}
-
 /* --- Stopka --- */
 #main-footer {
-  width: 100%;
   background-color: #111;
   color: #fff;
   padding: 30px 0;
   text-align: center;
 }
 .footer-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 .footer-logo {
   margin-bottom: 10px;
@@ -466,115 +463,46 @@ body {
   font-size: 0.9rem;
   color: #ccc;
 }
-/* --- Modal --- */
-.modal {
+
+/* --- Modal formularza --- */
+#form-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease;
-  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 3000;
 }
-.modal.show {
-  opacity: 1;
+#form-modal.show {
   visibility: visible;
+  opacity: 1;
 }
-.modal-content {
+#form-modal .modal-content {
   background: #fff;
   padding: 20px 30px;
   border-radius: 8px;
   text-align: center;
-  position: relative;
+  max-width: 90%;
 }
-.modal-content h2 {
-  color: blue;
+#form-modal .modal-content #form-modal-icon {
+  font-size: 50px;
   margin-bottom: 10px;
 }
-.modal-content p {
-  color: white;
-  font-size: 1rem;
+#form-modal .modal-content p {
+  font-size: 18px;
   margin-bottom: 20px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-.modal-button {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
+#form-modal .modal-content button {
   padding: 10px 20px;
+  border: none;
   border-radius: 4px;
+  color: #fff;
   cursor: pointer;
-  display: block;
-  margin: 0 auto; 
-}
-.modal-button:hover {
-  background-color: #2980b9;
-}
-
-/* --- Responsywność --- */
-@media (max-width: 768px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-  .contact-left,
-  .contact-right {
-    margin-bottom: 40px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .header-container {
-    padding: 0 40px;
-  }
-  .tile-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .why-tile-container {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  .faq-flex {
-    gap: 80px;
-  }
-}
-@media (max-width: 768px) {
-  .header-container {
-    padding: 0 20px;
-    flex-direction: column;
-  }
-  .header-center {
-    margin-top: 10px;
-  }
-  .tile-container {
-    grid-template-columns: 1fr;
-  }
-  .why-tile-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .why-tile {
-    min-height: 220px;
-  }
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 480px) {
-  .header-container {
-    padding: 0 10px;
-  }
-  .nav-link {
-    font-size: 0.9rem;
-    margin: 0 5px;
-  }
-  .faq-flex {
-    gap: 40px;
-  }
-  .why-tile {
-    min-height: 200px;
-  }
 }
