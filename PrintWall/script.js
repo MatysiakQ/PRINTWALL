@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
     slideInterval = setInterval(nextSlide, 5000);
   }
 
-  // Animacja "PRINTWALL"
+  // Animacja "PRINTWALL" - efekt fali kolorów
   const printWall = document.querySelector(".printwall");
   if (printWall) {
     const printText = printWall.textContent.trim();
     printWall.innerHTML = "";
-    printText.split("").forEach((letter) => {
+    printText.split("").forEach(letter => {
       const span = document.createElement("span");
       span.textContent = letter;
       span.style.color = "#fff";
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function coloringWave() {
       const letters = printWall.querySelectorAll("span");
-      letters.forEach((letter) => (letter.style.color = "#fff"));
+      letters.forEach(letter => letter.style.color = "#fff");
       let index = 0;
       letters[index].style.color = randomColor();
 
@@ -99,19 +99,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       whiten();
     }
-
     coloringWave();
   }
 
-  // FAQ
+  // FAQ – rozwijanie odpowiedzi
   const faqQuestions = document.querySelectorAll(".faq-question");
-  faqQuestions.forEach((question) => {
+  faqQuestions.forEach(question => {
     question.addEventListener("click", function () {
       this.parentElement.classList.toggle("active");
     });
   });
 
-  // Formularz kontaktowy
+  // Obsługa formularza kontaktowego z modalem
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -127,26 +126,59 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         body: formData,
       })
-        .then((response) => response.text())
-        .then((data) => {
+        .then(response => response.text())
+        .then(data => {
+          // Wywołanie modalu – w zależności od odpowiedzi serwera
           if (data.trim() === "OK") {
-            document.getElementById("success-modal").classList.add("show");
+            showModal({
+              icon: "😊",
+              iconColor: "green",
+              text: "Udało się wysłać formularz",
+              buttonText: "Super!",
+              buttonColor: "green"
+            });
             contactForm.reset();
           } else {
-            alert("Błąd: " + data);
+            showModal({
+              icon: "☹️",
+              iconColor: "red",
+              text: "Niestety, nie udało się wysłać formularza, spróbuj ponownie :c",
+              buttonText: "OK!",
+              buttonColor: "red"
+            });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error("Błąd:", error);
-          alert("Nie udało się wysłać formularza, spróbuj ponownie później.");
+          showModal({
+            icon: "☹️",
+            iconColor: "red",
+            text: "Niestety, nie udało się wysłać formularza, spróbuj ponownie :c",
+            buttonText: "OK!",
+            buttonColor: "red"
+          });
         });
     });
-
-    const modalButton = document.getElementById("modal-button");
-    if (modalButton) {
-      modalButton.addEventListener("click", function () {
-        document.getElementById("success-modal").classList.remove("show");
-      });
-    }
   }
+
+  // Funkcje modalu dla formularza
+  const formModal = document.getElementById("form-modal");
+  const modalIcon = document.getElementById("form-modal-icon");
+  const modalText = document.getElementById("form-modal-text");
+  const modalButton = document.getElementById("form-modal-button");
+
+  function showModal({ icon, iconColor, text, buttonText, buttonColor }) {
+    modalIcon.textContent = icon;
+    modalIcon.style.color = iconColor;
+    modalText.textContent = text;
+    modalButton.textContent = buttonText;
+    modalButton.style.backgroundColor = buttonColor;
+    formModal.classList.add("show");
+  }
+
+  function hideModal() {
+    formModal.classList.remove("show");
+  }
+
+  modalButton.addEventListener("click", hideModal);
 });
