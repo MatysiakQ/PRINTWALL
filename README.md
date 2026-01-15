@@ -1,6 +1,6 @@
 # PRINTWALL 🖨️🧱
 
-[![Status](https://img.shields.io/badge/Status-In_Development-yellow)](https://github.com/MatysiakQ/PRINTWALL)
+[![Status](https://img.shields.io/badge/closed)](https://github.com/MatysiakQ/PRINTWALL)
 [![Tech](https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS%20%7C%20PHP-blue)](https://github.com/MatysiakQ/PRINTWALL)
 
 ## 📝 O Projekcie
